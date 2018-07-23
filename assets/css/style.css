@@ -29,6 +29,31 @@ h2 {
     font-size: 18pt;
 }
 
+button {
+    background-color: #000000;
+    border: 3px solid #ffffff;
+    color: #ffffff;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ffffff;
+    color: #000000;
+}
+
 #heart {
     font-size: 16pt;
+}
+
+#guess-phrase {
+    letter-spacing: 0.5em;
+}
+
+#incorrect-guesses {
+    letter-spacing: 1em;
+}
+
+#HiddenContainer {
+    display: none;
 }

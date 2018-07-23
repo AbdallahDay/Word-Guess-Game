@@ -19,10 +19,10 @@
             <h2>Video Game Edition</h2>            
         </header>
 
-        <div class="container">
+        <div id="MainContainer" class="container">
             <div class="row">
                 <div class="col">
-                    <p>Press any key to start...</p>
+                    <p id="message">Press any key to start...</p>
                 </div>
             </div>
             <div class="row">
@@ -34,7 +34,7 @@
                 <div class="col">
                     <p>Game title:</p>
                     <br>
-                    <p id="guess-phrase">___ ______ __ _____</p>
+                    <p id="guess-phrase"></p>
                 </div>
             </div>
             <div class="row">
@@ -44,11 +44,13 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <p>Guesses:</p>
-                    <p id="guessed-letters"></p>
+                    <p>Letters already guessed:</p>
+                    <p id="incorrect-guesses"></p>
                 </div>
             </div>
         </div>
+
+        <div id="HiddenContainer" class="container"></div>
 
 
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
