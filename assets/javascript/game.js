@@ -1,16 +1,23 @@
 var game = {
     wins: 0,
     guesses: 12,
-    words: ["GTA San Andreas", "Pac Man", "Pokemon", "Sonic the Hedgehog", "Super Mario Bros", "Tetris"],
+    gamesList: ["GTA San Andreas", "Pac Man", "Pokemon", "Sonic the Hedgehog", "Super Mario Bros", "Tetris"],
+    words: [],
     currentWord: "",
     currentGuessPhrase: "",
     incorrectGuesses: "",
 
-    Initialize: function() {
-        //used to start/restart game
+    Initialize: function(isReload) {
+        if (isReload) {
+            //repopulate words array, reset win count, re-initialize game
+            this.words = this.gamesList.slice(0);   //copy values instead of referencing
+            this.wins = 0;
+        }
 
-        //reset guess count
-        this.guesses = 12;
+        console.log("gamesList: " + this.gamesList);
+        console.log("words: " + this.words);
+
+        this.guesses = 12;  //reset guess count
         this.currentGuessPhrase = "";
         this.incorrectGuesses = "";
 
@@ -21,10 +28,8 @@ var game = {
             this.currentWord = this.words[Math.floor(Math.random() * this.words.length)];
             this.words.splice(this.words.indexOf(this.currentWord), 1);
 
-            console.log(this.currentWord);//DEBUG
-
             //update display
-            $("#wins-number").text(this.wins);
+            $(".wins-number").text(this.wins);
             $("#guesses-left").text(this.guesses);
 
             //display correct number of underscores and spaces for currentWord
@@ -39,11 +44,7 @@ var game = {
             $("#guess-phrase").text(this.currentGuessPhrase);
         } else {
             //no more words to choose from
-            var newP = $(`<p>Congratulations! You have completed the game with ${this.wins} wins!</p>`);
-            var reloadBtn = $('<button id="reload-btn">Reload</button>');
-
-            $("#HiddenContainer").html(newP);
-            $("#HiddenContainer").append(reloadBtn);
+            $("#wins-losses").text(this.wins);
 
             $("#MainContainer").hide();
             $("#HiddenContainer").show();
@@ -51,7 +52,6 @@ var game = {
     },
 
     UserInput: function(letter) {
-        console.log("input: " + letter);
         if (this.currentWord.toLowerCase().includes(letter.toLowerCase())) {
         //guessed correctly, update currentGuessPhrase with letter
 
@@ -68,10 +68,10 @@ var game = {
             if (this.currentGuessPhrase.toLowerCase() === this.currentWord.toLowerCase()) {
                 //WIN
                 this.wins++;
-                $("#wins-number").text(this.wins);
+                $("#wins").text(this.wins);
 
-                //restart game
-                this.Initialize();
+                //next phrase
+                this.Initialize(false);
             }
         } else if (!this.incorrectGuesses.toLowerCase().includes(letter.toLowerCase())) {
             //first, make sure it's not already recorded
@@ -79,19 +79,22 @@ var game = {
             this.guesses--;
             $("#guesses-left").text(this.guesses);
 
-            console.log("remaining guesses: " + this.guesses);//DEBUG
-
             this.incorrectGuesses += letter.toUpperCase();
             $("#incorrect-guesses").text(this.incorrectGuesses);
+
+            if (this.guesses === 0) {
+                //LOSS, next phrase
+                this.Initialize(false);
+            }
         }
     }
 };
 
 $(document).ready(function() {
-    game.Initialize();
+    game.Initialize(true);
 
     $("#reload-btn").on("click", function() {
-        game.Initialize();
+        game.Initialize(true);
         
         $("#HiddenContainer").hide();
         $("#MainContainer").show();

@@ -27,7 +27,7 @@
             </div>
             <div class="row">
                 <div class="col">
-                    <p>Wins: <span id="wins-number"></span></p>
+                    <p>Wins: <span id="wins"></span></p>
                 </div>
             </div>
             <div class="row">
@@ -50,7 +50,10 @@
             </div>
         </div>
 
-        <div id="HiddenContainer" class="container"></div>
+        <div id="HiddenContainer" class="container">
+            <p>You have completed the game with <span id="wins-losses"></span> wins!</p>
+            <button id="reload-btn">Reload</button>
+        </div>
 
 
         <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
