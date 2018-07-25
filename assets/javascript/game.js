@@ -6,6 +6,7 @@ var game = {
     currentWord: "",
     currentGuessPhrase: "",
     incorrectGuesses: "",
+    audio: new Audio(),
 
     Initialize: function(isReload) {
         if (isReload) {
@@ -13,9 +14,6 @@ var game = {
             this.words = this.gamesList.slice(0);   //copy values instead of referencing
             this.wins = 0;
         }
-
-        console.log("gamesList: " + this.gamesList);
-        console.log("words: " + this.words);
 
         this.guesses = 12;  //reset guess count
         this.currentGuessPhrase = "";
@@ -70,6 +68,16 @@ var game = {
                 this.wins++;
                 $("#wins").text(this.wins);
 
+                //Play audio
+                if (this.audio != undefined) {
+                    this.audio.pause();
+                }
+                this.audio = document.getElementById(`audio-${GetID(this.currentWord)}`);
+                this.audio.play();
+
+                //Display image
+                
+
                 //next phrase
                 this.Initialize(false);
             }
@@ -89,6 +97,22 @@ var game = {
         }
     }
 };
+
+function GetID(name) {
+    //converts game title (eg. "GTA San Andreas")
+    //to hyphenated, lower-case string used as the id for audio elements and filenames for images
+    var id = "";
+
+    for (var i = 0; i < name.length; i++) {
+        if (name[i] === ' ') {
+            id += "-";
+        } else {
+            id += name[i].toLowerCase();
+        }
+    }
+
+    return id;
+}
 
 $(document).ready(function() {
     game.Initialize(true);
