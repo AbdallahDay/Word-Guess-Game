@@ -6,7 +6,17 @@ body {
     font-family: 'Press Start 2P', cursive;
     color: #ffffff;
     background-color: #000000;
-    color: #ffffff;
+    background-size: contain;
+}
+
+#MainContainer, #content-wrapper {
+    min-height: 100vh;
+}
+
+#content-wrapper {
+    background-color: #000000;
+    display: inline-block;
+    padding: 30px 100px 0 100px;
 }
 
 .row {
@@ -15,7 +25,6 @@ body {
 }
 
 header {
-    margin-top: 30px;
     margin-bottom: 50px;
 }
 

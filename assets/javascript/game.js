@@ -11,6 +11,7 @@ var game = {
     Initialize: function(isReload) {
         if (isReload) {
             //repopulate words array, reset win count, re-initialize game
+            $("body").css("background-image", "none");
             this.words = this.gamesList.slice(0);   //copy values instead of referencing
             this.wins = 0;
         }
@@ -44,7 +45,7 @@ var game = {
             //no more words to choose from
             $("#wins-losses").text(this.wins);
 
-            $("#MainContainer").hide();
+            $("#ContentContainer").hide();
             $("#HiddenContainer").show();
         }
     },
@@ -76,7 +77,7 @@ var game = {
                 this.audio.play();
 
                 //Display image
-                
+                $("body").css({"background-image": `url(assets/images/${GetID(this.currentWord)}.png)`});
 
                 //next phrase
                 this.Initialize(false);
@@ -121,7 +122,7 @@ $(document).ready(function() {
         game.Initialize(true);
         
         $("#HiddenContainer").hide();
-        $("#MainContainer").show();
+        $("#ContentContainer").show();
     });
 
     $(document).on("keyup", function(event) {

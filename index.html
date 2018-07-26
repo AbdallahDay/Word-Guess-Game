@@ -14,52 +14,56 @@
     </head>
 
     <body>
-        <header>
-            <h1>Hangman</h1>
-            <h2>Video Game Edition</h2>            
-        </header>
-
-        <audio id="audio-gta-san-andreas" src="assets/audio/gta-san-andreas.mp3" type="audio/mpeg"></audio>
-        <audio id="audio-pac-man" src="assets/audio/pac-man.mp3" type="audio/mpeg"></audio>
-        <audio id="audio-pokemon" src="assets/audio/pokemon.mp3" type="audio/mpeg"></audio>
-        <audio id="audio-sonic-the-hedgehog" src="assets/audio/sonic-the-hedgehog.mp3" type="audio/mpeg"></audio>
-        <audio id="audio-super-mario-bros" src="assets/audio/super-mario-bros.mp3" type="audio/mpeg"></audio>
-        <audio id="audio-tetris" src="assets/audio/tetris.mp3" type="audio/mpeg"></audio>
-
         <div id="MainContainer" class="container">
-            <div class="row">
-                <div class="col">
-                    <p id="message">Press any key to start...</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <p>Wins: <span id="wins"></span></p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <p>Game title:</p>
-                    <br>
-                    <p id="guess-phrase"></p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <p><i id="heart" class="fas fa-heart"></i> x <span id="guesses-left"></span></p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col">
-                    <p>Letters already guessed:</p>
-                    <p id="incorrect-guesses"></p>
-                </div>
-            </div>
-        </div>
+            <div id="content-wrapper">
+                <header>
+                    <h1>Hangman</h1>
+                    <h2>Video Game Edition</h2>            
+                </header>
 
-        <div id="HiddenContainer" class="container">
-            <p>You have completed the game with <span id="wins-losses"></span> wins!</p>
-            <button id="reload-btn">Reload</button>
+                <audio id="audio-gta-san-andreas" src="assets/audio/gta-san-andreas.mp3" type="audio/mpeg"></audio>
+                <audio id="audio-pac-man" src="assets/audio/pac-man.mp3" type="audio/mpeg"></audio>
+                <audio id="audio-pokemon" src="assets/audio/pokemon.mp3" type="audio/mpeg"></audio>
+                <audio id="audio-sonic-the-hedgehog" src="assets/audio/sonic-the-hedgehog.mp3" type="audio/mpeg"></audio>
+                <audio id="audio-super-mario-bros" src="assets/audio/super-mario-bros.mp3" type="audio/mpeg"></audio>
+                <audio id="audio-tetris" src="assets/audio/tetris.mp3" type="audio/mpeg"></audio>
+
+                <div id="ContentContainer" class="container">
+                    <div class="row">
+                        <div class="col">
+                            <p id="message">Press any key to start...</p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Wins: <span id="wins"></span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Game title:</p>
+                            <br>
+                            <p id="guess-phrase"></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p><i id="heart" class="fas fa-heart"></i> x <span id="guesses-left"></span></p>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col">
+                            <p>Letters already guessed:</p>
+                            <p id="incorrect-guesses"></p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="HiddenContainer" class="container">
+                    <p>You have completed the game with <span id="wins-losses"></span> wins!</p>
+                    <button id="reload-btn">Reload</button>
+                </div>
+            </div>
         </div>
 
 
