@@ -1,1 +1,3 @@
-# Word-Guess-Game
+# Hangman Game
+
+https://abdallahday.github.io/Word-Guess-Game/
